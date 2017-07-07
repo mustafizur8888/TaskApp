@@ -23,12 +23,22 @@
     <div class="container">
         <form id="form1" runat="server">
             <div class="row">
+                <div class="alert  alert-danger text-center" runat="server" id="divError">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <asp:Label runat="server" ID="lblError"></asp:Label>
+                </div>
+                <div class="alert  alert-success text-center" runat="server" id="divSucc">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <asp:Label runat="server" ID="lblSuccess"></asp:Label>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-12 col-lg-12 col-sm-12">
                     <div class="form-group">
                         <label for="txtTaskId">Task Name</label>
                         <asp:TextBox runat="server" ID="txtTaskId" ReadOnly="True" CssClass="form-control"></asp:TextBox>
 
-                    </div>  
+                    </div>
                 </div>
 
                 <div class="col-md-12 col-lg-12 col-sm-12">
@@ -50,8 +60,8 @@
                 <div class="col-md-12 col-sm-12 col-lg-12" style="padding-left: 2%">
                     <div class="form-group ">
                         <div class="btn-group">
-                            <asp:Button runat="server" ID="btnCancel" CssClass="btn btn-primary" Text="Cancel" />
-                            <asp:Button runat="server" ID="btnSave" CssClass="btn btn-primary" Text="Save" />
+                            <asp:Button runat="server" ID="btnCancel" CssClass="btn btn-primary" Text="Cancel" OnClick="btnCancel_OnClick"/>
+                            <asp:Button runat="server" ID="btnSave" CssClass="btn btn-primary" Text="Save" OnClick="btnSave_OnClick" />
 
                         </div>
                     </div>
@@ -60,10 +70,39 @@
                 <div class="col-md-12 col-lg-12 col-sm-12">
                     <asp:GridView ID="grdTask" runat="server" CssClass="table table-striped table-hover  table-condensed " AutoGenerateColumns="False" GridLines="None">
                         <Columns>
-                            <asp:TemplateField HeaderText="Group Code">
+                            <asp:TemplateField HeaderText="id">
                                 <ItemTemplate>
-                                    <asp:HiddenField runat="server" ID="hideCgRef" Value='<%# Bind("CGRef") %>' />
-                                    <asp:Label runat="server" ID="lblCGCode" Text='<%# Bind("CGCode") %>' />
+
+                                    <asp:Label runat="server" ID="lblid" Text='<%# Bind("id") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Name">
+                                <ItemTemplate>
+                                    <asp:Label runat="server" ID="lblname" Text='<%# Bind("name") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Description">
+                                <ItemTemplate>
+                                    <asp:Label runat="server" ID="lbldescription" Text='<%# Bind("description") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="DateCreated">
+                                <ItemTemplate>
+                                    <asp:Label runat="server" ID="lbldateCreated" Text='<%# Bind("dateCreated") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="DateUpdated">
+                                <ItemTemplate>
+                                    <asp:Label runat="server" ID="lbldateUpdated" Text='<%# Bind("dateUpdated") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Action">
+                                <ItemTemplate>
+                                    <div class="btn-group btn-group-sm">
+                                        <asp:Button runat="server" CssClass="btn btn-primary btn-sm " Text="Edit" ID="btnEdit" OnClick="btnEdit_OnClick" />
+                                        <asp:Button runat="server" CssClass="btn btn-danger  btn-sm" Text="Delete" ID="btnDelete" OnClick="btnDelete_OnClick" />
+                                    </div>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
