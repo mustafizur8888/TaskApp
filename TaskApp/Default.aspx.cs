@@ -42,7 +42,7 @@ namespace TaskApp
                 int count = _db.ExecuteNonQuery("Sp_Task_InsertUpdate", sqlParameters);
                 if (count > 0)
                 {
-                    ShowSuccMsg(!string.IsNullOrWhiteSpace(txtTaskId.Text)
+                    ShowSuccMsg(string.IsNullOrWhiteSpace(txtTaskId.Text)
                         ? "Saved Successfully"
                         : "Update Successfully");
                     LoadGrd();
