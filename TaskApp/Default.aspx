@@ -1,15 +1,79 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TaskApp.Default" %>
 
+
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-    </form>
+
+    <div class="container">
+        <form id="form1" runat="server">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="form-group">
+                        <label for="txtTaskId">Task Name</label>
+                        <asp:TextBox runat="server" ID="txtTaskId" ReadOnly="True" CssClass="form-control"></asp:TextBox>
+
+                    </div>  
+                </div>
+
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="form-group">
+                        <label for="txtTaskName">Task Name</label>
+                        <asp:TextBox runat="server" ID="txtTaskName" CssClass="form-control"></asp:TextBox>
+
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="form-group">
+                        <label for="txtDescription">Task Name</label>
+                        <asp:TextBox runat="server" ID="txtDescription" CssClass="form-control"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-lg-12" style="padding-left: 2%">
+                    <div class="form-group ">
+                        <div class="btn-group">
+                            <asp:Button runat="server" ID="btnCancel" CssClass="btn btn-primary" Text="Cancel" />
+                            <asp:Button runat="server" ID="btnSave" CssClass="btn btn-primary" Text="Save" />
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <asp:GridView ID="grdTask" runat="server" CssClass="table table-striped table-hover  table-condensed " AutoGenerateColumns="False" GridLines="None">
+                        <Columns>
+                            <asp:TemplateField HeaderText="Group Code">
+                                <ItemTemplate>
+                                    <asp:HiddenField runat="server" ID="hideCgRef" Value='<%# Bind("CGRef") %>' />
+                                    <asp:Label runat="server" ID="lblCGCode" Text='<%# Bind("CGCode") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
