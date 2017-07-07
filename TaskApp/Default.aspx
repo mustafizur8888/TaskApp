@@ -53,7 +53,7 @@
 
                 <div class="col-md-12 col-lg-12 col-sm-12">
                     <div class="form-group">
-                        <label for="txtDescription">Task Name</label>
+                        <label for="txtDescription">Task Description</label>
                         <asp:TextBox runat="server" ID="txtDescription" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
